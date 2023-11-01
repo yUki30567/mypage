@@ -1,0 +1,37 @@
+.directory-position a {
+    margin: 10px;
+    cursor: pointer;
+    color: #000;
+    text-decoration: none;
+}
+
+.directory-position a:hover {
+    transition: .5s;
+    color: grey;
+    font-size: 95%;
+}
+
+.directory-position h1 {
+    margin: 10px;
+}
+
+.gallery-section li {
+    list-style: none;
+}
+
+.gallery-section img {
+    display: block;   
+    margin: auto; 
+    width: 500px;
+    height: 500px;
+    object-fit: cover;
+}
+
+.gallery-section span {
+    text-align: center;
+}
+
+.caption,
+.date {
+    margin: 0 10px;
+}

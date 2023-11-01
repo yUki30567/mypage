@@ -1,0 +1,7 @@
+#▼ignoreFileList
+.DS_Store
+
+#▼ignoreDirectory
+.vscode/
+trush/
+historyFiles/

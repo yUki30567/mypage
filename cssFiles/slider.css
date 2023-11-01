@@ -1,0 +1,122 @@
+.slider {
+    position:relative;
+    z-index: 1;
+    height: 100vh;/* slider要素の高さを端末画面の高さに設定 */
+}
+
+/* 背景画像設定---------------------------------------------------- */
+
+.slider-item01 {
+    background:url(../imageFiles/20190712_JPN07255-2.jpg);
+}
+.slider-item02 {
+    background:url(../imageFiles/FH000001.JPG);
+}
+.slider-item03 {
+    background:url(../imageFiles/FH000019.JPG);
+}
+.slider-item {
+    width: 100%; /* 各スライダー全体の横幅を画面の高さいっぱい（100%）にする*/
+    height:100vh; /* 各スライダー全体の縦幅を画面の高さいっぱい（100vh）にする*/
+    background-repeat: no-repeat; /* 背景画像を繰り返し適用しない */
+    background-position: center; /* 背景画像の中央を表示 */
+    background-size: cover; /*slider要素全体に背景画像を余白なしで表示*/
+    animation: fadeIn 1s forwards;
+    opacity: 0;
+}
+
+/* 矢印の設定----------------------------------------------------*/
+
+/*左右の矢印の位置、形状、色*/
+.slick-prev, 
+.slick-next {
+    position: absolute; /*絶対配置にする*/
+    z-index: 3;
+    top: 42%; /* 矢印の位置(高さ) */
+    cursor: pointer; /* ポインタを合わせた時に「指マーク」に*/
+    outline: none; /* クリックをした際に出てくる枠線を消す */
+    border-top: 2px solid #ccc; /* 矢印の太さ、輪郭、色 */
+    border-right: 2px solid #ccc; /* 矢印の太さ、輪郭、色 */
+    height: 25px; /* 矢印のサイズ */
+    width: 25px; /* 矢印のサイズ */
+}
+
+.slick-prev {
+    left:2.5%; /* 矢印の横軸の位置 */
+    transform: rotate(-135deg); /* 矢印の方向の調整(-135度回転) */
+}
+
+.slick-next {
+    right:2.5%; /* 矢印の横軸の位置 */
+    transform: rotate(45deg); /* 矢印の方向の調整(45度回転) */
+}
+
+/* ドットナビゲーションの設定 ----------------------------------------------------*/
+
+.slick-dots {
+  position: relative;
+  z-index: 3;
+  text-align:center; /* ドットを中央に配置 */
+  margin:-50px 0 0 0; /* 画像内にドットを移動(上に-50px移動) */
+}
+
+.slick-dots li {
+    display:inline-block; /* inlineとして配置(並列) */
+    margin:0 5px; /* 各要素の左右に余白 */
+}
+
+.slick-dots button {
+    color: transparent; /* ボタンのインデックス番号を透明にする */
+    outline: none;
+    width:8px; /* ドットボタンのサイズ */
+    height:12px; /* ドットボタンのサイズ */
+    display:block;
+    border-radius:50%; /* 輪郭を丸く */
+    border: none; /* ボタンの枠線を無効 */
+    background:#ccc; /* ドットボタンの色 */
+}
+
+.slick-dots .slick-active button{
+    background:#333;/*選択中のボタンの色*/
+}
+
+/*========= レイアウトのためのCSS ===============*/
+ul{
+  margin:0;
+  padding: 0;
+  list-style: none;
+}
+
+a{
+  color: #fff;
+}
+
+a:hover,
+a:active{
+  text-decoration: none;
+}
+
+h1{
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size:6vw;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.wrapper{
+  position: relative;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

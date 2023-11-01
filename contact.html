@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>contact</title>
+    <link rel="stylesheet" type="text/css" href="./cssFiles/sanitize.css">
+    <link rel="stylesheet" type="text/css" href="./cssFiles/contact.css">
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <!-- Form Section -->
+    <section class="form-section">
+        <form action="" class="contact-form" id="contact-form">
+            <h1>CONTACT</h1>
+            <p>
+                Please Contact Me.
+            </p>
+            <table class="form-table">
+                <tbody>
+                    <tr>
+                        <th>
+                            <label for="first-name">FIRST NAME</label><span>*</span>
+                        </th>
+                        <td>
+                            <input class="input" id="first-name" onblur="fieldCheck(this)" type="text" placeholder="Your First Name" required="required">   
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="last-name">LAST NAME</label><span>*</span>
+                        </th>
+                        <td>
+                            <input class="input" id="last-name" onblur="fieldCheck(this)" type="text" placeholder="Your Last Name" required="required">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            GENDER<span>*</span>
+                        </th>
+                        <td>
+                            <label class="radio"><input type="radio" name="gender" value="0" required>Male</label>
+                            <label class="radio"><input type="radio" name="gender" value="1">Female</label>
+                            <label class="radio"><input type="radio" name="gender" value="2">Other</label>                                                
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="age">AGE</label><span>*</span>
+                        </th>
+                        <td>
+                            <input class="input" type="text" id="age" onblur="fieldCheck(this)" placeholder="Your Age" required="required" pattern="^([1-9]|[1-9][0-9]|[1][0-2][0-9])$" title="※半角数字1〜129">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="e-mail">MAIL</label><span>*</span>
+                        </th>
+                        <td>
+                            <input class="input" id="e-mail" onblur="fieldCheck(this)" type="email" placeholder="E-Mail Address" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="e-mail-validation">For confirming email address</label><span>*</span>
+                        </th>
+                        <td>
+                            <input class="input" id="e-mail-validation" onblur="fieldCheck(this)" type="email" placeholder="*Please Write Again E-mail Address" required>
+                        </td>
+                    </tr>            
+                    <tr>
+                        <th>
+                        <label for="phone-number">PHONE NUMBER</label>
+                        </th>
+                        <td>
+                            <input class="input" id="phone-number" onblur="fieldCheck(this)" type="tel" placeholder="Phone Number">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Do You Want News Letter ?<span>*</span>
+                        </th>
+                        <td>
+                            <label class="radio"><input type="radio" name="yesno" value="0" required checked>Yes.I Want!!</label>
+                            <label class="radio"><input type="radio" name="yesno" value="1"> No.I Don't Need it</label>
+                        </td>
+                    </tr>                
+                    <tr>
+                        <th>
+                            <label for="title">TITLE</label><span>*</span>
+                        </th>
+                        <td>
+                            <input class="input" id="title" onblur="fieldCheck(this)" type="text" placeholder="Title" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="message">MESSAGE</label><span>*</span>
+                        </th>
+                        <td>
+                            <textarea class="textarea" id='message' onblur="fieldCheck(this)" cols="30" rows="5" placeholder="Your Message" required></textarea>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="button" id="form-submit" type="submit" onclick="errorCheck();" disabled>SEND</button>            
+        </form>
+    </section>
+    <script>
+
+        const formErrClassName = 'form-error';
+        const errMsgClassName = 'error-message';
+        const formActiveClassName = 'form-active';
+        const ageRegPtn = '^[0-9]$|^[1-9][0-9]$|^100$';
+        const mailRegPtn = '^[a-zA-Z0-9_.+-]+@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+[a-zA-Z]{2,}$';
+        const phoneNumberRegPtn = '^(0[5-9]0[0-9]{8}|0[1-9][1-9][0-9]{7})$';
+
+        // const fieldCheck = (elem) => {
+
+        //     let typeValue = elem.getAttribute('type');
+        //     let idValue = elem.getAttribute('id')
+        //     let parentElem = elem.parentNode;
+        //     let msgElem = document.createElement("p"); 
+        //     msgElem.classList.add(errMsgClassName);
+
+        //     function errClear(parentElem) {
+        //         if(parentElem.querySelector('p') !== null){
+        //             let removeNode = parentElem.querySelector('.' + errMsgClassName);
+        //             parentElem.removeChild(removeNode);
+        //             elem.classList.remove(formErrClassName);
+        //         }
+        //     }            
+            
+        //     if(elem.hasAttribute('required')) {
+        //         if (elem.value == "") {
+        //             if(parentElem.querySelector('p') == null) {
+        //                 msgElem.textContent = "This field is required.";
+        //                 parentElem.insertBefore(msgElem, elem.node);
+        //                 elem.classList.add(formErrClassName);
+        //             }
+        //         } else {
+        //             errClear(parentElem);
+        //         }
+        //     }
+        //     if(elem.value !== ''){
+        //         if(idValue == 'age') {
+        //             if(!elem.value.match(ageRegPtn)) {
+        //                 if(parentElem.querySelector('p') == null){
+        //                     msgElem.textContent = 'Please enter a value between 0 and 100.';
+        //                     parentElem.insertBefore(msgElem, elem.node);
+        //                     elem.classList.add(formErrClassName);
+        //                 }   
+        //             } else {
+        //                 errClear(parentElem);
+        //             }
+
+        //         } else if(idValue == 'e-mail') {
+        //             if(!elem.value.match(mailRegPtn)) {
+        //                 if(parentElem.querySelector('p') == null){
+        //                     msgElem.textContent = 'This field must be a valid email address.';
+        //                     parentElem.insertBefore(msgElem, elem.node);
+        //                     elem.classList.add(formErrClassName);
+        //                 }   
+        //             } else {
+        //             errClear(parentElem);
+        //             }      
+                                    
+        //         } else if(idValue == 'e-mail-validation'){
+        //             if(eMailForm.value !== eMailValidationForm.value) {
+        //                 if(parentElem.querySelector('p') == null){
+        //                     msgElem.textContent = 'The e-mail address confirmation does not match.';
+        //                     parentElem.insertBefore(msgElem, elem.node);
+        //                     elem.classList.add(formErrClassName);
+        //                 }
+        //             } else {
+        //             errClear(parentElem);
+        //             }
+
+        //         } else if(idValue == 'phone-number') {
+        //             let replaceNumber = elem.value.replace(/-/g,'');
+        //             if(!replaceNumber.match(phoneNumberRegPtn)) {
+        //                 if(parentElem.querySelector('p') == null) {
+        //                     msgElem.textContent = 'Thid field must be a valid phone number.';
+        //                     parentElem.insertBefore(msgElem, elem.node);
+        //                     elem.classList.add(formErrClassName);
+        //                 }
+        //             } else {
+        //             errClear(parentElem);
+        //             }
+        //         }
+        //     }
+        // }
+
+        var eMailForm = document.getElementById('e-mail');
+        var eMailValidationForm = document.getElementById('e-mail-validation');
+        const errObj = [
+            {
+                id: 'age',
+                matchPtn: ageRegPtn,
+                errMsg: 'Please enter a value between 0 and 100.'
+            },
+            {
+                id: 'e-mail',
+                matchPtn: mailRegPtn,
+                errMsg: 'This field must be a valid email address.'
+            },
+            {
+                id: 'e-mail-validation',
+                matchPtn: eMailForm.value,
+                errMsg: 'The e-mail address confirmation does not match.'
+            },
+            {
+                id: 'phone-number',
+                matchPtn: phoneNumberRegPtn,
+                errMsg: 'This field must be a valid phone number.'
+            },
+        ];
+
+        const buttonActivator = () => {
+            let formBtn = document.getElementById('form-submit');
+            let inputTags = document.getElementsByTagName('input');
+            let completeFlag = false
+            for(let i = 0; i < inputTags.length; i++){
+                if(inputTags[i].classList.contains(formErrClassName)) {
+                    formBtn.disabled = true;                    
+                    completeFlag = false;
+                    break;
+                }
+                completeFlag = true;
+            };
+            if(completeFlag == true) {
+                if(!formBtn.classList.contains(formActiveClassName)) {
+                    formBtn.classList.add(formActiveClassName);
+                }
+            } else if(completeFlag == false) {
+                if(formBtn.classList.contains(formActiveClassName)) {
+                    formBtn.classList.remove(formActiveClassName);
+                    formBtn.disabled = false;
+                }
+            }
+        }
+
+        const fieldCheck = (elem) => {         
+
+            let typeValue = elem.getAttribute('type');
+            let idValue = elem.getAttribute('id')
+            let parentElem = elem.parentNode;
+            let msgElem = document.createElement("p"); 
+            msgElem.classList.add(errMsgClassName);
+
+            function errClear(parentElem) {
+                if(parentElem.querySelector('p') !== null){
+                    let removeNode = parentElem.querySelector('.' + errMsgClassName);
+                    parentElem.removeChild(removeNode);
+                    elem.classList.remove(formErrClassName);
+                }
+            }            
+
+            if(elem.hasAttribute('required')) {
+                if (elem.value == "") {
+                    if(parentElem.querySelector('p') == null) {
+                        msgElem.textContent = "This field is required.";
+                        parentElem.insertBefore(msgElem, elem.node);
+                        elem.classList.add(formErrClassName);
+                    }
+                } else {
+                    errClear(parentElem);
+                }
+            }            
+
+            let index = 0;
+            const errObjLengs = errObj.length;
+
+            while(index < errObjLengs) {
+                if(elem.value !== ''){
+                    if(idValue == errObj[index].id) {
+                        if(!elem.value.match(errObj[index].matchPtn)) {
+                            if(parentElem.querySelector('p') == null){
+                                msgElem.textContent = errObj[index].errMsg;
+                                parentElem.insertBefore(msgElem, elem.node);
+                                elem.classList.add(formErrClassName);
+                            }   
+                        } else {
+                            errClear(parentElem);
+                        }
+                    }
+                }
+                index++;
+            }
+            buttonActivator();   
+        }        
+
+        // let $input = document.getElementsByTagName('input');
+        // let index = 0;
+        // const inputLengs = $input.length
+        
+        // while(index < inputLengs) {
+        //     $input[index].addEventListener('click', (e) => {
+        //         if(e.target.classList.contains(formErrClassName)) {
+        //             e.target.classList.remove(formErrClassName);
+        //         }
+
+        //         let $parentElem = e.target.parentNode;
+        //         let $pTag = $parentElem.querySelector('p');
+
+        //         if($pTag !== null) {
+        //             if($pTag.classList.contains(errMsgClassName)) {
+        //                 $pTag.remove();
+        //             }
+        //         }
+            
+        //     })
+        //     index++;
+        // }
+
+    </script>
+
+</body>
+
+</html>

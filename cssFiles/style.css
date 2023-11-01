@@ -1,0 +1,62 @@
+#header {
+    position: fixed;
+    width: 100%;
+    height: 50px;
+    z-index: 999;
+    font-weight: bold;
+}
+#header img {
+    padding: 10px;    
+    width: 40px;
+    height: 40px;
+}
+#header a {
+    font-size: 30px;
+    text-decoration: none;
+    color: #000;
+}
+#homeimage {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+/* ▼ヘッダ非表示---------------------------------------------- */
+
+#header.UpMove {
+    animation: UpAnime 1s forwards;
+}
+@keyframes UpAnime {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+}
+
+/* ▼ヘッダ表示---------------------------------------------- */
+
+#header.DownMove {
+    animation: DownAnime 1s forwards;
+}
+@keyframes DownAnime {
+    from {
+        opacity: 0; /* 要素を透明に(非表示)する */
+        transform: translateY(-100px); /* 要素をY軸に-100px(上方向に)移動する */
+    }
+    to {
+        opacity: 1; /* 要素を不透明に(表示)する */
+        transform: translateY(0); /* 要素をY軸に-100px(上方向に)移動しない */
+    }
+    /* fromからtoへ変化させる */
+}
+
+a:hover {
+    opacity: .5;
+    font-size: 105%;
+    /* border-bottom: solid; */
+    transition: all .5s;
+}

@@ -1,0 +1,177 @@
+.flex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.home {
+    width: 100%;
+    height: 50px;
+}
+
+.navigate {
+    width: 100%;
+    height: 32px;
+    margin: 10px 0;
+}
+
+.home a,
+.navigate a {
+    font-size: 16px;
+    letter-spacing: .05em;
+    margin: 0 10px;
+    cursor: pointer;
+    color: #000;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+a:hover {
+    transition: all 0.5s;
+    opacity: .5;
+    font-size: 1.1em;
+}
+
+.directory span {
+    margin: 5px;
+}
+
+/* フレックスボックス生成 */
+.flexbox ,
+.profile-area1,
+.profile-area2,
+.profile-area3 {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.profile-area1 {
+    width: 90%;
+    margin: 0 5% 0 5%;
+}
+
+.profile-area2 {
+    width: 45%;
+    margin-left: 5%;
+}
+
+.profile-area3 {
+    width: 45%;
+    margin-right: 5%;
+}
+
+.profile-theme {
+    width: 100%;
+}
+
+.profile-theme h1 {
+    text-transform: uppercase; 
+}
+
+.profile-img {
+    width: 100%;
+    margin-right: 5%;
+    position: relative;
+}
+
+/* 正方形の擬似要素を生成 */
+.profile-img::before {
+    content: "";
+    padding-top: 100%;
+    display: block;
+}
+
+.profile-img img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+}
+
+.profile-subject {
+    width: 100%;
+}
+
+.profile-subject h2 {
+    text-transform: uppercase;
+    margin: 1rem 0;
+    letter-spacing: .5em;
+    font-weight: 300;
+}
+.profile-subject p {
+    font-size: 1em;
+    letter-spacing: .3em;
+    font-weight: 400;
+}
+
+.profile-text {
+    width: 100%;
+    font-size: 0.7em;
+    letter-spacing: 0.3em;
+    line-height: 2;
+}
+
+.flex-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.works-theme {
+    text-transform: uppercase;
+    width: 100%;
+    margin-top: 10%;
+    text-align: center;
+}
+
+.works-img {
+    width: 50%;
+    margin: 0 25%;
+    position: relative;
+}
+
+.works-img::before {
+    content: "";
+    padding-top: 100%;
+    display:block
+}
+
+.works-img img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+@media screen and (max-width:770px) {
+    .flexbox {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+    }
+    .profile-area1 ,
+    .profile-area2 ,
+    .profile-area3 {
+        width: 80%;
+        margin: 0 10% 0 10%;
+        justify-content: center;
+    }
+
+    .profile-img {
+        margin:0
+    }
+
+    .profile-text {
+        width: 100%;
+    }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+1p&family=M+PLUS+Rounded+1c:wght@300;400&family=Work+Sans&display=swap');
