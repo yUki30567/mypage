@@ -18,3 +18,20 @@ wall.click(function() {
     btn.toggleClass(clickClassName);
     wall.toggleClass(wallClassName);
 })
+
+//scroll section
+let hideClassName = 'hiden-header';
+let previousScroll = 0;
+let scrolled = 0;
+
+window.addEventListener('scroll',()=>{
+    previousScroll = scrolled;
+    scrolled = window.pageYOffset;
+    if(!$('#side-menu').hasClass(openClassName)){
+        if(scrolled > previousScroll){
+            $("header").addClass(hideClassName);
+        } else {
+            $("header").removeClass(hideClassName);
+        }
+    }
+})
