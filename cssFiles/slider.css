@@ -96,7 +96,7 @@ a:active{
   text-decoration: none;
 }
 
-h1{
+#mainarea h1{
   position: absolute;
   z-index: 2;
   top: 50%;
